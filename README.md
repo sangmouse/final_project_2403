@@ -21,19 +21,19 @@ Các chức năng của final project:
 
 ---
 
-scss - style module scss
-js -> jsx
-axios
-react bootstrap, bootstrap
-jsx
-style module scss
-axios
-redux, react redux, redux toolkit, redux dev tools
-create react app
-react bootstrap, bootstrap / antd design, tailwincss / MUI
-react router
-Formik, yup, pure process
-local storage
-json-server
-npm, yarn, nvm
-cách dùng các đơn vị phổ biến trong css
+- scss
+- js
+- axios
+- react bootstrap, bootstrap
+- jsx
+- style module scss
+- axios
+- redux, react redux, redux toolkit, redux dev tools
+- create react app
+- react bootstrap, bootstrap / antd design, tailwincss / MUI
+- react router
+- Formik, yup, pure process
+- local storage
+- json-server
+- npm, yarn, nvm
+- cách dùng các đơn vị phổ biến trong css
