@@ -4,11 +4,14 @@
 :root {
   --c-white: #fff;
   --c-white-2: #00000008;
+  --c-white-3: #ededed;
   --c-black: #000;
   --c-black-2: #080521;
+  --c-black-3: #301cd9;
   --c-black-light: #080521;
   --c-red-bolder: #ab162c;
   --c-yellow: #f2a22a;
+  --c-grey: grey;
 }
 
 // font-family
@@ -46,4 +49,27 @@ a {
 
 ul {
   margin: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  tr,
+  th,
+  td {
+    text-align: center;
+    padding: 10px 0;
+    border: 1px solid var(--c-grey);
+  }
+  th {
+    text-align: center;
+    background: var(--c-black-2);
+    color: var(--c-white);
+    letter-spacing: 1px;
+  }
+}
+
+button {
+  border: none;
+  background: transparent;
 }

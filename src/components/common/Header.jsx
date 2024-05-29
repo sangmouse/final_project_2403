@@ -22,7 +22,7 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to=""
+                to="/login"
                 className={`text-decoration-none text-uppercase ${classes.link}`}
               >
                 Login

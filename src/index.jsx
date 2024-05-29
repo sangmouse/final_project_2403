@@ -5,11 +5,34 @@ import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import LayoutRoot from "components/common/LayoutRoot";
+import UserList from "components/UserList";
+import UserDetail from "components/UserDetail";
+import UserCreate from "components/UserCreate";
+import Login from "components/Login";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LayoutRoot />,
+    children: [
+      {
+        path: "",
+        element: <UserList />,
+      },
+      {
+        path: "user/:id",
+        element: <UserDetail />,
+      },
+      {
+        path: "user/create",
+        element: <UserCreate />,
+      },
+    ],
+  },
+
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 
