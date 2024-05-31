@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import imgLogo from "assets/images/logo.png";
 import classes from "assets/styles/Header.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const [token, setToken] = useState();
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    localStorage.removeItem("userToken");
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    const userToken = localStorage.getItem("userToken");
+    setToken(userToken);
+  });
+
   return (
     <div className={`bg-white ${classes.header}`}>
       <div className="container">
@@ -21,12 +34,21 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link
-                to="/login"
-                className={`text-decoration-none text-uppercase ${classes.link}`}
-              >
-                Login
-              </Link>
+              {token ? (
+                <button
+                  className={`text-decoration-none text-uppercase ${classes.link}`}
+                  onClick={handleSignOut}
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <Link
+                  to="/login"
+                  className={`text-decoration-none text-uppercase ${classes.link}`}
+                >
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>

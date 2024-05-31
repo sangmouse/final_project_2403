@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import imgLogo from "assets/images/footer_logo.png";
 import classes from "assets/styles/Footer.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const [token, setToken] = useState();
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    localStorage.removeItem("userToken");
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    const userToken = localStorage.getItem("userToken");
+    setToken(userToken);
+  });
+
   return (
     <div className={classes.footer}>
       <div className="container">
@@ -26,7 +39,11 @@ const Footer = () => {
                 <Link to="/">User List</Link>
               </li>
               <li>
-                <Link to="/">Login</Link>
+                {token ? (
+                  <button onClick={handleSignOut}>Sign Out</button>
+                ) : (
+                  <Link to="/login">Login</Link>
+                )}
               </li>
             </ul>
           </div>
