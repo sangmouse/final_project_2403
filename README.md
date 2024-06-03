@@ -2,10 +2,10 @@ Các chức năng của final project:
 
 - Login(done)
 - Logout(done)
-- User List
+- User List (done)
 - Create new user
 - Update user
-- Delete user
+- Delete user (done)
 - Paging
 - Sorting
 - Filter

@@ -22,4 +22,18 @@
     height: 40px;
     margin: 0 0 30px 0;
   }
+
+  &__delete {
+    background-color: var(--c-red-bolder);
+    border: none;
+    &:hover {
+      background-color: var(--c-red-bolder);
+    }
+    &:focus-visible {
+      border: none;
+    }
+    &:active {
+      background-color: var(--c-red-bolder) !important;
+    }
+  }
 }
