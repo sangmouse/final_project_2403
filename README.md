@@ -44,6 +44,25 @@ Các chức năng của final project:
   - bấm ok => xóa
   - cancel => ko xóa
 
+4. tạo mới user
+
+- validate form (done)
+- click create =>
+
+  - khi tạo mới => phải generate ID cho user (done)
+  - gọi api create new để lưu data vào db.json (done)
+  - lưu data vào redux (done)
+  - list tự động update lại (done)
+
+5. edit user
+
+- click button edit ở userlist => redirect qua page edit và đổ data
+  của user cần được edit vào form
+- chuyển text button từ create thành update
+- gọi api update user
+- sau khi thành công => chuyển về home
+- reset form và chuyển text về lại create new
+
 - scss
 - js
 - axios

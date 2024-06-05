@@ -65,4 +65,11 @@
       height: 50px;
     }
   }
+
+  .message__error {
+    font-weight: bold;
+    p {
+      margin: 0;
+    }
+  }
 }

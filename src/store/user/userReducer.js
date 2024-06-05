@@ -12,6 +12,10 @@ export const getUserList = createAsyncThunk("user/getList", async () => {
   return response.data;
 });
 
+export const createUser = createAsyncThunk("user/create", async (user) => {
+  await axios.post("http://localhost:3000/users", user);
+});
+
 export const deleteUserByID = createAsyncThunk(
   "user/deleteByID",
   async (id) => {
