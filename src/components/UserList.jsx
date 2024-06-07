@@ -4,13 +4,21 @@ import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUserByID, getUserList } from "store/user/userReducer";
-import { Button } from "react-bootstrap";
+import { Button, Pagination } from "react-bootstrap";
 
 const UserList = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const [userSelected, setUserSelected] = useState(null);
   const dispatch = useDispatch();
   const userList = useSelector((store) => store.user.userList);
+  const itemsPerPage = 5;
+  const totalItems = userList?.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  let paginateItems = [];
+
+  for (let index = 1; index <= totalPages; index++) {
+    paginateItems.push(<Pagination.Item key={index}>{index}</Pagination.Item>);
+  }
 
   const handleDeleteUser = () => {
     dispatch(deleteUserByID(userSelected?.id));
@@ -26,7 +34,7 @@ const UserList = () => {
     <>
       <div>
         <div className="container">
-          <div>
+          <div className="mt-5">
             <Link
               to="user/create"
               className={`${classes.btn} ${classes.btn__create__new}`}
@@ -75,6 +83,13 @@ const UserList = () => {
               </tr>
             ))}
           </table>
+
+          {/* pagination */}
+          <div className="d-flex justify-content-center my-5">
+            <Pagination size="md" className="d-inline-flex">
+              {paginateItems}
+            </Pagination>
+          </div>
         </div>
       </div>
 

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "assets/styles/Form.module.scss";
 import { nanoid } from "nanoid";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { createUser } from "store/user/userReducer";
+import { Link, useNavigate } from "react-router-dom";
+import { createUser, updateUser } from "store/user/userReducer";
+import axios from "axios";
 
-const Form = () => {
+const Form = (props) => {
+  console.log(props, "props");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -43,7 +45,7 @@ const Form = () => {
     return year + "-" + month + "-" + day;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!user?.firstName?.trim()) {
       msgError.firstName = "💀 First Name is required";
     }
@@ -75,8 +77,17 @@ const Form = () => {
         ...user,
         id: nanoid(10),
       };
-      dispatch(createUser(userNew));
+
+      if (props?.userDetail) {
+        await axios.put(
+          `http://localhost:3000/users/${props?.userDetail?.id}`,
+          user
+        );
+      } else {
+        dispatch(createUser(userNew));
+      }
       navigate("/");
+      props?.resetUserDetail;
     }
   };
 
@@ -130,6 +141,19 @@ const Form = () => {
       department: "",
     });
   };
+
+  useEffect(() => {
+    if (props?.userDetail) {
+      setUser({
+        ...user,
+        firstName: props?.userDetail?.firstName,
+        lastName: props?.userDetail?.lastName,
+        address: props?.userDetail?.address,
+        birthday: props?.userDetail?.birthday,
+        department: props?.userDetail?.department,
+      });
+    }
+  }, [props?.userDetail]);
 
   return (
     <div className={classes.form}>
@@ -189,9 +213,12 @@ const Form = () => {
         </select>
       </div>
       <div className={classes.form__item}>
-        <button type="button" onClick={handleSubmit}>
-          Create
-        </button>
+        <div className={classes.form__item__btn__group}>
+          <Link to="/">Back</Link>
+          <button type="button" onClick={handleSubmit}>
+            {props?.userDetail ? "Update" : "Create"}
+          </button>
+        </div>
       </div>
       <div className={classes.message__error}>
         <p>{messageError?.firstName}</p>

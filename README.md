@@ -56,12 +56,26 @@ Các chức năng của final project:
 
 5. edit user
 
-- click button edit ở userlist => redirect qua page edit và đổ data
-  của user cần được edit vào form
+- click button edit ở userlist => redirect qua page edit và đổ data của user được chọn
+  của user cần được edit vào form - done
 - chuyển text button từ create thành update
 - gọi api update user
 - sau khi thành công => chuyển về home
 - reset form và chuyển text về lại create new
+
+6. pagination
+
+- total items : 30
+- số items / page : 5
+
+=> page = 30 / 5 = 6
+
+- khi click vào số trong pagination => gọi api để lấy ra list user trong page đó
+
+/users?\_page=1&\_limit=5
+/users?\_page=2&\_limit=5
+/users?\_page=3&\_limit=5
+/users?\_page=4&\_limit=5
 
 - scss
 - js
